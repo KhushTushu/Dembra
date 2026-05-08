@@ -1,11 +1,33 @@
-<div align="center">
+# Dembra Pharmacy ERP
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Professional, scalable, and AI-powered Pharmacy Management System.
 
-  <h1>Built with AI Studio</h2>
+## Features
+- **Dashboard**: Real-time sales overview, revenue tracking, and stock alerts.
+- **AI Forecast**: Demand prediction powered by Google Gemini 3.0.
+- **POS Billing**: Fast checkout system with cart management and tax calculation.
+- **Inventory**: Complete catalog management with batch tracking and low-stock alerts.
+- **Supplier Management**: Track vendor balances and contact information.
+- **Security**: Role-Based Access Control (RBAC) and Firebase Authentication.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## Tech Stack
+- **Frontend**: React, Tailwind CSS, Recharts, Framer Motion.
+- **Backend**: Node.js, Express.
+- **Database**: Google Cloud Firestore.
+- **AI**: Gemini API (@google/genai).
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## Installation & Setup
+1. **Initialize Firebase**: Run the `set_up_firebase` tool to provision the database.
+2. **Environment Variables**:
+   - `GEMINI_API_KEY`: Required for AI insights.
+3. **Usage**:
+   - Login with any Google account.
+   - Use the Sidebar to navigate between POS, Inventory, and Dashboard.
 
-</div>
+## Deployment
+This application is designed for Cloud Run deployment. The Express server handles both API requests and static file serving.
+- Build command: `npm run build`
+- Start command: `node server.ts` (handled by `npm start` in production).
+
+## Sample Data
+The system initializes with mock data in `Inventory.tsx`, `POS.tsx`, and `Dashboard.tsx` for immediate evaluation. These can be replaced with live Firestore data fetching using the provided `Medicine` and `Sale` types.

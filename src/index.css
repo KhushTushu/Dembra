@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-medical-50: #f0fdf4;
+  --color-medical-100: #dcfce7;
+  --color-medical-500: #10b981;
+  --color-medical-600: #059669;
+  --color-medical-700: #047857;
+  
+  --color-success-50: #f0fdf4;
+  --color-success-600: #16a34a;
+  
+  --color-warning-50: #fffbeb;
+  --color-warning-600: #d97706;
+  
+  --color-danger-50: #fef2f2;
+  --color-danger-600: #dc2626;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased overflow-hidden;
+  }
+}
+
+.high-density-table th {
+  @apply px-4 py-2 text-[10px] uppercase font-bold text-slate-500 bg-slate-50 border-b border-slate-200 sticky top-0;
+}
+
+.high-density-table td {
+  @apply px-4 py-2 text-[11px] border-b border-slate-100;
+}
+
+.dense-card {
+  @apply bg-white border border-slate-200 rounded-lg shadow-sm p-4;
+}
+
+.sidebar-link {
+  @apply flex items-center gap-3 px-3 py-2 text-xs tracking-wide rounded-md transition-colors;
+}
+
+.sidebar-label {
+  @apply text-[10px] uppercase font-bold text-slate-500 px-3 mb-2 mt-4 tracking-widest;
+}
+
+/* Custom scrollbar for high density */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-400 rounded-full hover:bg-slate-500 transition-colors;
+}

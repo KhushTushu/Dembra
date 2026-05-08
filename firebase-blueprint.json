@@ -1,0 +1,99 @@
+{
+  "entities": {
+    "medicine": {
+      "title": "Medicine",
+      "description": "A medicine product in the inventory.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "genericName": { "type": "string" },
+        "brandName": { "type": "string" },
+        "category": { "type": "string" },
+        "company": { "type": "string" },
+        "barcode": { "type": "string" },
+        "batchNumber": { "type": "string" },
+        "sku": { "type": "string" },
+        "purchasePrice": { "type": "number" },
+        "sellingPrice": { "type": "number" },
+        "discountPercentage": { "type": "number" },
+        "taxPercentage": { "type": "number" },
+        "expiryDate": { "type": "string", "format": "date-time" },
+        "manufacturingDate": { "type": "string", "format": "date-time" },
+        "stock": { "type": "number" },
+        "lowStockThreshold": { "type": "number" },
+        "unit": { "type": "string", "enum": ["Tablet", "Capsule", "Syrup", "Injection", "Other"] },
+        "prescriptionRequired": { "type": "boolean" },
+        "location": { "type": "string" },
+        "supplierId": { "type": "string" },
+        "description": { "type": "string" },
+        "image": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "brandName", "sku", "stock", "sellingPrice"]
+    },
+    "sale": {
+      "title": "Sale",
+      "description": "A sales transaction record.",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "items": { "type": "array" },
+        "totalBeforeTax": { "type": "number" },
+        "totalTax": { "type": "number" },
+        "totalDiscount": { "type": "number" },
+        "grandTotal": { "type": "number" },
+        "paymentMethod": { "type": "string", "enum": ["Cash", "Card", "Online"] },
+        "status": { "type": "string", "enum": ["Completed", "Refunded"] },
+        "sellerId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["grandTotal", "paymentMethod", "items", "createdAt"]
+    },
+    "purchase": {
+      "title": "Purchase",
+      "description": "A purchase order from a supplier.",
+      "type": "object",
+      "properties": {
+        "supplierId": { "type": "string" },
+        "items": { "type": "array" },
+        "totalAmount": { "type": "number" },
+        "status": { "type": "string", "enum": ["Received", "Pending", "Cancelled"] },
+        "invoiceNumber": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "supplier": {
+      "title": "Supplier",
+      "description": "A medicine supplier company.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "contactPerson": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "outstandingBalance": { "type": "number" }
+      }
+    },
+    "userProfile": {
+      "title": "User Profile",
+      "description": "System user information.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["Admin", "Pharmacist", "Staff"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/medicines/{medicineId}": { "schema": "medicine", "description": "Global medicine inventory" },
+    "/sales/{saleId}": { "schema": "sale", "description": "Sales transactions" },
+    "/purchases/{purchaseId}": { "schema": "purchase", "description": "Purchase orders" },
+    "/suppliers/{supplierId}": { "schema": "supplier", "description": "Suppliers database" },
+    "/users/{userId}": { "schema": "userProfile", "description": "User account data" }
+  }
+}

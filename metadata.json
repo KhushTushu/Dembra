@@ -1,0 +1,6 @@
+{
+  "name": "Dembra Pharmacy ERP",
+  "description": "A comprehensive, AI-powered Pharmacy Management System featuring POS, Inventory, Purchase Management, and Sales Analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["pos", "inventory", "analytics", "ai_forecasting"]
+}
